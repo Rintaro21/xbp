@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <!-- ⑥↓タイトルを変えてみよう -->
+    <title>第五回</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- ⑤スタイルシートの設定をしよう -->
+    <!-- h1.htmlからある行をコピペしてくればOK -->
+</head>
+<body>
+    <h1>第五回</h1>
+    <!-- 塊ごとにdivタグで区切るようにしましょう。 -->
+    今回私達の班では〇☓ゲームを作りました。<br>
+<br>
+    ソースコード<br>
+<br>
+<code>
+    <ol style="list-style:decimal-leading-zero outside;in-left:0;padding-left:36px;margin:0;background-color:#EEF;color:#000;">
+    <li style="background-color:#EFF;">import random</li>
+    <li style="background-color:#EEF;">gameBoard = [0,1,2,3,4,5,6,7,8] # ゲームに利用する盤面</li>
+    <li style="background-color:#EFF;"># 盤面を3x3で表示する</li>
+    <li style="background-color:#EEF;">def displayBoard():</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;# gameBoardの要素を1つずつ表示</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;print(<font style="color:brown;">"--+---+--"</font>) # デコレーション</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;for i in range(0, len(gameBoard)):</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(i%3 == 2): # 3回に1回は改行</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(gameBoard[i]) # 改行する</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(<font style="color:brown;">"--+---+--"</font>) # デコレーション</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elif(i%3 == 1):</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(<font style="color:brown;">" | "</font> + str(gameBoard[i]) + <font style="color:brown;">" | "</font>, end=<font style="color:brown;">""</font>) # 改行しない</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else :</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(gameBoard[i], end=<font style="color:brown;">""</font>) # 改行しない</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;print()</li>
+    <li style="background-color:#EEF;"># ターンを進める</li>
+    <li style="background-color:#EFF;">def inputBoard(playerType):</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;# 1.座標を入力させる</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;if(playerType == <font style="color:brown;">"o"</font>): # o が渡されたら座標を入力</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tgt = int(input(<font style="color:brown;">"0~8の座標を入れてください: "</font>))</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;else: # xが渡されたらランダムで座標を入力</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tgt = random.randint(0,8)</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;# 2.入力座標に <font style="color:brown;">'o'</font>か <font style="color:brown;">'x'</font> が入っていないことを確認</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;if(gameBoard[tgt] == <font style="color:brown;">'o'</font> or gameBoard[tgt] == <font style="color:brown;">'x'</font>):</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inputBoard(playerType)</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;# 3.gameBoardに反映</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;else:</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gameBoard[tgt] = playerType</li>
+    <li style="background-color:#EFF;"># 勝利判定</li>
+    <li style="background-color:#EEF;">def winner():</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;# 勝ち手を列挙</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;lines = [</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[0, 1, 2],</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3, 4, 5],</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6, 7, 8],</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[0, 3, 6],</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[1, 4, 7],</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2, 5, 8],</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[0, 4, 8],</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2, 4, 6],</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;]</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;# forで勝ち手を1パターンずつ見ていく</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;for i in range(0, len(lines)):</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[a, b, c] = lines[i]</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 勝ち手の場所に同じ記号が入っていないかを確認</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if gameBoard[a] and gameBoard[a] == gameBoard[b] and gameBoard[a] == gameBoard[c]:</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 同じ記号が入っていたら、入っている記号を返す</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return gameBoard[a]</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;# どちらも勝っていない場合はNoneを返す</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;return None</li>
+    <li style="background-color:#EFF;">displayBoard() # 実行時に初めに表示される盤面</li>
+    <li style="background-color:#EEF;"># ゲームを実行する</li>
+    <li style="background-color:#EFF;">for turn in range(0,9):</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;# 誰のターンかを判定する</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;if(turn %2 == 0) : # あなたのターン</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(<font style="color:brown;">"You"</font>)</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inputBoard(<font style="color:brown;">"o"</font>)</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;else: # CPUのターン</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(<font style="color:brown;">"CPU"</font>)</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inputBoard(<font style="color:brown;">"x"</font>)</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;displayBoard() # 盤面表示</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;if winner(): # 勝敗判定</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(winner() + <font style="color:brown;">"の勝ち"</font>)</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;if turn == 8: # 8手目で引き分け</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(<font style="color:brown;">"引き分け"</font>)</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break</li>
+    </ol></code> 
+</body>
+</html>
