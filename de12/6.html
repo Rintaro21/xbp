@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <!-- ⑥↓タイトルを変えてみよう -->
+    <title>第6回</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- ⑤スタイルシートの設定をしよう -->
+    <!-- h1.htmlからある行をコピペしてくればOK -->
+</head>
+<body>
+    <h1>第6回</h1>
+    <br>
+    
+    <code>
+        <ol style="list-style:decimal-leading-zero outside;in-left:0;padding-left:36px;margin:0;background-color:#EEF;color:#000;">
+        <li style="background-color:#EFF;">mask = df_data.loc[:, "路線"] == "ブルーライン"</li>
+        <li style="background-color:#EEF;">print(df_data[mask].sort_values(by="乗換時間").iloc[:5, :]["乗換時間"])</li>
+        <li style="background-color:#EFF;"></li>
+        <li style="background-color:#EEF;">print(df_data.loc[23942:23942, "駅"])</li>
+        <li style="background-color:#EFF;">print(df_data.loc[50035:50035, "駅"])</li>
+        <li style="background-color:#EEF;">print(df_data.loc[35661:35661, "駅"])</li>
+        <li style="background-color:#EFF;">print(df_data.loc[14649:14649, "駅"])</li>
+        <li style="background-color:#EEF;">print(df_data.loc[51899:51899, "駅"])</li>
+        <li style="background-color:#EFF;"></li>
+        <li style="background-color:#EEF;">mask = df_data.loc[:, "路線"] == "東急東横線"</li>
+        <li style="background-color:#EFF;">print(df_data[mask].sort_values(by="乗換時間").iloc[:5, :]["乗換時間"])</li>
+        <li style="background-color:#EEF;"></li>
+        </ol></code>
+    <br>
+    このことから乗り換えの時間が最も短い駅が横浜駅である。<br>
+    確かに土地代などが高くお金がかかるが、時間は有限で時間を買っていると思えば安いものだろう。<br>
+    また、横浜は多くのショッピングモールや施設なども充実しており、その上好通の便もいいのであ<br>
+    る程度の事は身近で済ますことができる。<br>
+    
+    なので横浜駅にした。
+
+</body>
+</html>
