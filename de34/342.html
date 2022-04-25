@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <!-- ⑥↓タイトルを変えてみよう -->
+    <title>第2回</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- ⑤スタイルシートの設定をしよう -->
+    <!-- h1.htmlからある行をコピペしてくればOK -->
+</head>
+<body>
+    <h1>第2回</h1>
+<br>
+今回LEDライトを使用して光をランダムに光らせることに挑戦しました。<br>
+これが使ったソースコードです↓<br>
+
+<br>
+    <!-- 塊ごとにdivタグで区切るようにしましょう。 -->
+    <code>
+        <ol style="list-style:decimal-leading-zero outside;in-left:0;padding-left:36px;margin:0;background-color:#EEF;color:#000;">
+        <li style="background-color:#EFF;">#include &lt;Adafruit_NeoPixel.h&gt;</li>
+        <li style="background-color:#EEF;">#define PIN        9 // 信号用のピンを指定</li>
+        <li style="background-color:#EFF;">#define NUMPIXELS 5 // LEDの数を指定</li>
+        <li style="background-color:#EEF;">int brightness=50;//明るさ</li>
+        <li style="background-color:#EFF;"></li>
+        <li style="background-color:#EEF;">Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);</li>
+        <li style="background-color:#EFF;"></li>
+        <li style="background-color:#EEF;">void setup() {</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;pixels.begin(); // NeoPixel出力ピンの初期化</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;pixels.setBrightness(brightness);</li>
+        <li style="background-color:#EFF;">}</li>
+        <li style="background-color:#EEF;"></li>
+        <li style="background-color:#EFF;">void loop() {</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;pixels.clear(); // すべてのLEDの色を0にセット</li>
+        <li style="background-color:#EFF;"></li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;for(int i=0; i&lt;NUMPIXELS; i++) {</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;int r=random(0,100);</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;int g=random(0,133);</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;int b=random(0,100);</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;pixels.setPixelColor(i,pixels.Color(200,g,b));</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;pixels.show();</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;delay(1000);</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;}</li>
+        <li style="background-color:#EEF;">}</li>
+        </ol></code>
+    <br>
+<h2>POV(問題発見)</h2><br>
+<br>
+<ol><br>
+    <li>私たちは、散らかった自分の部屋を見た時に負の感情が発生することに着目しました。</li><br>
+    <li>しかし、その負の感情にも多種多様なものが存在することに、驚きました。</li><br>
+    <li>この洞察により、同じ負の感情であってもそれが起因する理由は様々ですが、その本質が自責の念や罪悪感などに通じているのではないかと考えました。</li><br>
+    <li>このことから、私は自責をしなくてもいいような仕組み作りが必要だと考えました。</li>
+</ol><br>
+<br>
+<br>
+<br>
+
+
+
+</body>
+</html>
